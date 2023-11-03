@@ -1,0 +1,32 @@
+<window title="Адреса"
+        width="800px"
+        viewModel="@id('vm') @init('yan0kom.hotadv.ui.AddressViewModel')">
+
+    <caption>
+        <toolbarbutton label="Обновить" onClick="@command('refresh')" />
+    </caption>
+
+    <listbox model="@load(vm.addressList)"
+             emptyMessage="нет данных"
+             rows="10">
+
+        <listhead sizable="true">
+            <listheader label="ИД" width="50px" align="right" />
+            <listheader label="Индекс" width="80px" align="right" />
+            <listheader label="Город" />
+            <listheader label="Улица" />
+            <listheader label="Дом" />
+            <listheader label="Квартира" />
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="@init(each.id)" />
+                <listcell label="@init(each.zipCode)" />
+                <listcell label="@init(each.city)" />
+                <listcell label="@init(each.street)" />
+                <listcell label="@init(each.house)" />
+                <listcell label="@init(each.apartment)" />
+            </listitem>
+        </template>
+    </listbox>
+</window>

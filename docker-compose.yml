@@ -1,0 +1,30 @@
+services:
+  mysql:
+    image: mysql:8.2.0
+    container_name: hotadv-mysql
+    environment:
+      LANG: C.UTF-8
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: hotadv
+      MYSQL_USER: hotadv_user
+      MYSQL_PASSWORD: hotadv_pass      
+    volumes:
+      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - '3306:3306'
+    networks:
+      - hotadv
+
+  hotadv:
+    build: .
+    container_name: hotadv-wildfly
+    ports:
+      - '8080:8080'
+      - '8443:8443'
+      - '9990:9990'
+    networks:
+      - hotadv      
+
+networks:
+  hotadv:
+    driver: bridge

@@ -1,0 +1,11 @@
+# Gradle
+.gradle/
+build/
+
+# ignore all jar except gradle wrapper
+*.jar
+!gradle-wrapper.jar
+
+# IDEs
+.idea/
+.vscode/
