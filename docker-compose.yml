@@ -17,6 +17,7 @@ services:
 
   hotadv:
     build: .
+    image: hotadv_wildfly
     container_name: hotadv-wildfly
     ports:
       - '8080:8080'
