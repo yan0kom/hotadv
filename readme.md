@@ -10,3 +10,7 @@
 
 Сборка и разворачивание ear-приложения  
 `./gradlew :ear:redeploy`
+
+UI доступен по адресам:  
+http://localhost:8080  
+https://localhost:8443  
