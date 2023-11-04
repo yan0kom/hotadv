@@ -1,34 +1,29 @@
-<window title="Компании"
-        width="100%"
-        viewModel="@id('vm') @init('yan0kom.hotadv.ui.CompanyViewModel')"
-        apply="org.zkoss.bind.BindComposer">
-
-    <caption >
-        <toolbarbutton label="Обновить" onClick="@command('refresh')"/>
-    </caption>
-
+<div viewModel="@id('vm') @init('yan0kom.hotadv.ui.CompanyViewModel')">
     <hlayout>
-        <listbox model="@load(vm.companyList)"
-                 selectedItem="@bind(vm.selectedCompany)"
-                 emptyMessage="нет данных"
-                 vflex="true" hflex="2">
-
-            <listhead sizable="true">
-                <listheader label="ИД" width="50px" align="right" />
-                <listheader label="Название" />
-                <listheader label="Правовая форма" align="center" />
-                <listheader label="Адрес" />
-            </listhead>
-            <template name="model">
-                <listitem>
-                    <listcell label="@init(each.id)" />
-                    <listcell label="@init(each.name)" />
-                    <listcell label="@init(each.legalForm)" />
-                    <listcell label="@init(each.address)" />
-                </listitem>
-            </template>
-        </listbox>
-        <grid vflex="true" hflex="1">
+        <vlayout hflex="2">
+            <listbox model="@load(vm.companyList)"
+                     selectedItem="@bind(vm.selectedCompany)"
+                     emptyMessage="нет данных">
+                <listhead sizable="true">
+                    <listheader label="ИД" width="50px" align="right" />
+                    <listheader label="Название" />
+                    <listheader label="Правовая форма" align="center" />
+                    <listheader label="Адрес" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="@init(each.id)" />
+                        <listcell label="@init(each.name)" />
+                        <listcell label="@init(each.legalForm)" />
+                        <listcell label="@init(each.address)" />
+                    </listitem>
+                </template>
+            </listbox>
+            <div align="right">
+                <button label="Обновить" onClick="@command('refresh')" />
+            </div>
+        </vlayout>
+        <grid hflex="1">
             <columns>
                 <column width="30%"/>
                 <column width="70%"/>
@@ -69,18 +64,19 @@
                     Филиалы
                     <listbox
                             model="@load(vm.editorCompany.branches)"
-                            tabindex="5">
+                            tabindex="5"
+                            emptyMessage="Нет филиалов">
                         <template name="model">
                             <listitem label="@load(each)" />
                         </template>
                     </listbox>
                 </row>
-                <row align="right">
-                    <button disabled="true">
-                        Сохранить
-                    </button>
+                <row>
+                    <cell colspan="2" align="right">
+                        <button disabled="true" label="Сохранить"/>
+                    </cell>
                 </row>
             </rows>
         </grid>
     </hlayout>
-</window>
+</div>

@@ -24,7 +24,7 @@ public class CompanyViewModel {
     }
 
     @Command
-    @NotifyChange("companyList")
+    @NotifyChange({"companyList", "editorCompany"})
     public void refresh() {
         companyList = domainService.getCompanyRowList();
         if (!companyList.isEmpty()) {

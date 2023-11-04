@@ -1,28 +1,24 @@
-<window title="Филиалы"
-        width="800px"
-        viewModel="@id('vm') @init('yan0kom.hotadv.ui.BranchViewModel')">
-
-    <caption>
-        <toolbarbutton label="Обновить" onClick="@command('refresh')" />
-    </caption>
-
-    <listbox model="@load(vm.branchList)"
-             emptyMessage="нет данных"
-             rows="10">
-
-        <listhead sizable="true">
-            <listheader label="ИД" width="50px" align="right" />
-            <listheader label="Название"/>
-            <listheader label="Адрес"/>
-            <listheader label="Компания" />
-        </listhead>
-        <template name="model">
-            <listitem>
-                <listcell label="@init(each.id)" />
-                <listcell label="@init(each.name)" />
-                <listcell label="@init(each.address)" />
-                <listcell label="@init(each.company)" />
-            </listitem>
-        </template>
-    </listbox>
-</window>
+<div viewModel="@id('vm') @init('yan0kom.hotadv.ui.BranchViewModel')">
+    <vlayout>
+        <listbox model="@load(vm.branchList)"
+                 emptyMessage="нет данных">
+            <listhead sizable="true">
+                <listheader label="ИД" width="50px" align="right" />
+                <listheader label="Название"/>
+                <listheader label="Адрес"/>
+                <listheader label="Компания" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="@init(each.id)" />
+                    <listcell label="@init(each.name)" />
+                    <listcell label="@init(each.address)" />
+                    <listcell label="@init(each.company)" />
+                </listitem>
+            </template>
+        </listbox>
+        <div align="right">
+            <button label="Обновить" onClick="@command('refresh')" />
+        </div>
+    </vlayout>
+</div>

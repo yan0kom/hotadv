@@ -1,0 +1,12 @@
+<tabbox id="tb" vflex="1">
+    <tabs id="tabs">
+        <tab id="A" label="Адреса" />
+        <tab id="B" label="Филиалы" />
+        <tab id="C" label="Компании" />
+    </tabs>
+    <tabpanels>
+        <tabpanel><include src="addresses.zul"/></tabpanel>
+        <tabpanel><include src="branches.zul"/></tabpanel>
+        <tabpanel><include src="companies.zul"/></tabpanel>
+    </tabpanels>
+</tabbox>
