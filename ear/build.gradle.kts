@@ -14,10 +14,6 @@ dependencies {
 
 tasks.ear {
     archiveBaseName = "hotel-advisors"
-
-    deploymentDescriptor {
-        applicationName = "hotel-advisors"
-    }
 }
 
 tasks.register<Exec>("redeploy") {

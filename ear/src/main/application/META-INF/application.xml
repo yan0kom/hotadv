@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="6">
+  <application-name>hotel-advisors</application-name>
+  <module>
+    <ejb>domain.jar</ejb>
+  </module>
+  <module>
+    <ejb>persist.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>ui.war</web-uri>
+      <context-root>/</context-root>
+    </web>
+  </module>
+  <library-directory>lib</library-directory>
+</application>
