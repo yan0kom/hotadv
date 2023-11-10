@@ -20,9 +20,8 @@ public class BranchRepoImpl implements BranchRepo {
     }
 
     public Stream<Branch> streamByCompany(CompanyJpa c) {
-        var q = em.createQuery("SELECT b FROM BranchJpa b WHERE b.company = :c");
+        var q = em.createQuery("SELECT b FROM BranchJpa b WHERE b.company = :c", BranchJpa.class);
         q.setParameter("c", c);
-        Stream<BranchJpa> jpa = q.getResultStream();
-        return jpa.map(BranchJpa::toDomain);
+        return q.getResultStream().map(BranchJpa::toDomain);
     }
 }

@@ -16,17 +16,16 @@ public class CompanyRepoImpl implements CompanyRepo {
 
     @Override
     public Stream<Company> streamAll() {
-        Stream<CompanyJpa> jpa = em.createQuery("SELECT c FROM CompanyJpa c").getResultStream();
+        Stream<CompanyJpa> jpa = em.createQuery("SELECT c FROM CompanyJpa c", CompanyJpa.class).getResultStream();
         return jpa.map(CompanyJpa::toDomain);
     }
 
     @Override
     public Optional<Company> getById(Long id) {
-        var q = em.createQuery("SELECT c FROM CompanyJpa c WHERE c.id = :id");
+        var q = em.createQuery("SELECT c FROM CompanyJpa c WHERE c.id = :id", CompanyJpa.class);
         q.setParameter("id", id);
         try {
-            var c = (CompanyJpa) q.getSingleResult();
-            return Optional.of(c).map(CompanyJpa::toDomain);
+            return Optional.of(q.getSingleResult()).map(CompanyJpa::toDomain);
         } catch (Exception ex) {
             return Optional.empty();
         }

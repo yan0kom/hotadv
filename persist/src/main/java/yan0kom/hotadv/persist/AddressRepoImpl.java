@@ -15,7 +15,7 @@ public class AddressRepoImpl implements AddressRepo {
 
     @Override
     public Stream<Address> streamAll() {
-        Stream<AddressJpa> jpa = em.createQuery("SELECT a FROM AddressJpa a").getResultStream();
+        Stream<AddressJpa> jpa = em.createQuery("SELECT a FROM AddressJpa a", AddressJpa.class).getResultStream();
         return jpa.map(AddressJpa::toDomain);
     }
 }
