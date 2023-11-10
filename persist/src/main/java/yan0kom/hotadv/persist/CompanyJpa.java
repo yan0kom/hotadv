@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,7 +31,7 @@ public class CompanyJpa {
     private String legalForm;
 
     /** Адрес */
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name="address_id", nullable = false)
     private AddressJpa address;
 
